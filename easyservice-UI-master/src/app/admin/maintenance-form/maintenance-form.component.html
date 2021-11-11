@@ -5,8 +5,6 @@
             <form #maintenanceForm="ngForm" (ngSubmit)="onAddMaintenance(maintenanceForm)">
                 <div class="form-group" >
                     <label for="" class="">Maintenance Name</label>
-                    <!-- <input type="text" name="maintenanceName" id="maintenanceName" class="form-control w-75" placeholder="Enter Your Maintenance Name" ngModel required>
-                    <span ng-show="maintenanceForm.maintenanceName.$touched && maintenanceForm.maintenanceName.$invalid">The name is required.</span> -->
                     <input type="text" name="maintenanceName" id="maintenanceName" class="form-control w-75" placeholder="Enter Your Maintenance Name" ngModel #maintenanceName="ngModel" required minlength=8 maxlength=10/>
                     <div *ngIf="!maintenanceName.valid &&(maintenanceName.touched)" >
                         <div *ngIf="maintenanceName.errors.required" class="errorMsg">
@@ -14,15 +12,6 @@
                         </div>
                     </div>
                 </div>
-                    <!-- <input  required formControlName="maintenanceName" type="text" name="maintenanceName" id="maintenanceName" class="form-control w-75" placeholder="Enter Your Maintenance Name" minlength="8"> -->
-                    <!-- <small *ngIf="maintenanceForm.get('maintenanceName').invalid && maintenanceForm.get('maintenanceName').touched" class="helpId" class="form-text text-muted"> name is required</small> -->
-                    <!-- <div class="form-group">
-                        <label for="">CompanyName</label>
-                        <input required formControlName="dcompanyname" type="text" class="form-control" name="dcompanyname" id="dcompanyname" aria-describedby="helpId" placeholder="companyName" minlength="3">
-                        <small *ngIf="deleteCmpy.get('dcompanyname').invalid && deleteCmpy.get('dcompanyname').touched" class="helpId" class="form-text text-muted">Company name should be greater than 3</small>
-                    </div> -->
-                    <!-- <span ng-show="ngForm.maintenanceName.$touched && ngForm.maintenanceName.$invalid">The name is required.</span> -->
-                    <!-- <small *ngIf="deleteCmpy.get('dcompanyname').invalid && deleteCmpy.get('dcompanyname').touched" class="helpId" class="form-text text-muted">Company name should be greater than 3</small>-->
                 <div class="form-group ">
                     <label for="maintenanceManager " class=" ">Maintenance Manager</label>
                     <input type="text " name="maintenanceManager " id="maintenanceManager " class="form-control w-75 " placeholder="Enter Your Maintenance Manager Name " ngModel #maintenanceManager="ngModel" required minlength=8 maxlength=10/>
