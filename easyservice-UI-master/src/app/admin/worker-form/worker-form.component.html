@@ -1,0 +1,119 @@
+<div [ngClass]="'worker-container'">
+  <div class="container d-flex flex-row justify-content-center">
+    <div class="mt-5 pl-5 pr-5 pb-5 pt-2 w-50" [ngClass]="'workers'">
+      <h3 class="text-center mb-3">ADD Worker</h3>
+      <form #workerForm="ngForm" (ngSubmit)="onAddWorker(workerForm)">
+        <div class="form-group">
+          <label for="workerName" class="">Worker Name</label>
+          <input
+            type="text"
+            name="workerName"
+            id="workerName"
+            class="form-control w-75"
+            placeholder="Enter Your Worker Name"
+            ngModel
+            #workerName="ngModel" required minlength=8 maxlength=10
+          />
+          <div *ngIf="!workerName.valid &&(workerName.touched)" >
+            <div *ngIf="workerName.errors.required" class="errorMsg">
+              <small id="helpId" class="text-muted">*required</small>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="workType" class="">Work Type</label>
+          <input
+            type="text"
+            name="workType"
+            id="workType"
+            class="form-control w-75"
+            placeholder="Enter Your work Type"
+            ngModel
+            #workType="ngModel" required minlength=8 maxlength=10
+          />
+          <div *ngIf="!workType.valid &&(workType.touched)" >
+            <div *ngIf="workType.errors.required" class="errorMsg">
+              <small id="helpId" class="text-muted">*required</small>
+            </div>
+          </div>
+        </div>
+            <div class="form-group">
+            <label for="availability" class="" >Availability</label>
+            <select
+            class="form-control"
+            name="availability"
+            id="availability"
+            ngModel
+            #availability="ngModel" required 
+            >
+            <option value="Available">Available</option>
+            <option value="Not-Available">Not-Available</option>
+            </select>
+            <div *ngIf="!availability.valid &&(availability.touched)" >
+              <div *ngIf="availability.errors.required" class="errorMsg">
+                <small id="helpId" class="text-muted">*required</small>
+              </div>
+            </div>
+           </div>
+            <div class="form-group">
+            <label for="contactNumber" class="">Contact Number</label>
+            <input
+            type="text"
+            name="contactNumber"
+            id="contactNumber"
+            class="form-control w-75"
+            placeholder="Enter Your Contact Number"
+            ngModel
+            #contactNumber="ngModel" required maxlength=10
+            />
+              <div *ngIf="!contactNumber.valid &&(contactNumber.touched)" >
+                <div *ngIf="contactNumber.errors.required" class="errorMsg">
+                  <small id="helpId" class="text-muted">*required</small>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+            <label for="workingHours" class="">Working Hours</label>
+            <input
+            type="number"
+            name="workingHours"
+            id="workingHours"
+            class="form-control w-75"
+            placeholder="Enter Your Working Hours"
+            ngModel
+            #workingHours="ngModel" required 
+            />
+            <div *ngIf="!workingHours.valid &&(workingHours.touched)" >
+              <div *ngIf="workingHours.errors.required" class="errorMsg">
+               <small id="helpId" class="text-muted">*required</small>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+          <label for="workerImg" class="">Image</label>
+          <input
+            type="text"
+            name="workerImg"
+            id="workerImg"
+            class="form-control w-75"
+            placeholder="Enter Image URL"
+            ngModel
+            #workerImg="ngModel" required minlength=20 maxlength=40
+          />
+            <div *ngIf="!workerImg.valid &&(workerImg.touched)" >
+              <div *ngIf="workerImg.errors.required" class="errorMsg">
+                <small id="helpId" class="text-muted">*required</small>
+              </div>
+            </div>
+          </div>
+        <div class="">
+          <button type="submit" class="btn btn-primary" [disabled]='!workerForm.valid'>Submit</button>
+        </div>
+      </form>
+    </div>
+    </div>
+  </div>
+
+
+  
+

@@ -1,0 +1,72 @@
+<div [ngClass]="'task-container'">
+    <div class="container d-flex flex-row justify-content-center">
+        <div class="mt-5 pl-5 pr-5 pb-5 pt-2 w-50" [ngClass]="'task'">
+            <h3 class="text-center mb-3">ADD TASK</h3>
+            <form #taskForm="ngForm" (ngSubmit)="onAddTask(taskForm)">
+                <div class="form-group">
+                    <label for="taskName" class="">Task Name</label>
+                    <input type="text" name="taskName" id="taskName" class="form-control w-75" placeholder="Enter Your Task Name" ngModel #taskName="ngModel" required minlength=8 maxlength=10/>
+                    <div *ngIf="!taskName.valid &&(taskName.touched)" >
+                        <div *ngIf="taskName.errors.required" class="errorMsg">
+                          <small id="helpId" class="text-muted">*required</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="organiser" class="">organiser</label>
+                    <input type="text" name="organiser" id="organiser" class="form-control w-75" placeholder="Enter organiser" ngModel #organiser="ngModel" required minlength=8 maxlength=10/>
+                    <div *ngIf="!organiser.valid &&(organiser.touched)" >
+                        <div *ngIf="organiser.errors.required" class="errorMsg">
+                          <small id="helpId" class="text-muted">*required</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="tStartDate" class="">Start Date</label>
+                    <input type="date" name="tStartDate" id="tStartDate" class="form-control w-75" placeholder="Enter Start Date" ngModel #tStartDate="ngModel" required/>
+                    <div *ngIf="!tStartDate.valid &&(tStartDate.touched)" >
+                        <div *ngIf="tStartDate.errors.required" class="errorMsg">
+                          <small id="helpId" class="text-muted">*required</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="tEndDate" class="">End Date</label>
+                    <input type="date" name="tEndDate" id="tEndDate" class="form-control w-75" placeholder="Enter End date" ngModel #tEndDate="ngModel" required/>
+                    <div *ngIf="!tEndDate.valid &&(tEndDate.touched)" >
+                        <div *ngIf="tEndDate.errors.required" class="errorMsg">
+                          <small id="helpId" class="text-muted">*required</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="durationDays" class="">durationDays</label>
+                    <input type="number" name="durationDays" id="durationDays" class="form-control w-75" placeholder="Enter durationDays" ngModel #durationDays="ngModel" required />
+                    <div *ngIf="!durationDays.valid &&(durationDays.touched)" >
+                        <div *ngIf="durationDays.errors.required" class="errorMsg">
+                          <small id="helpId" class="text-muted">*required</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="tStatus" class="">Status</label>
+                    <select class="form-control" name="tStatus" id="tStatus" ngModel #tStatus="ngModel" required >
+            <option value="INPROGRESS">INPROGRESS</option>
+            <option value="ONHOLD">ONHOLD</option>
+            <option value="COMPLETED">COMPLETED</option>
+            <option value="DEFINED">DEFINED</option>
+          </select>
+          <div *ngIf="!tStatus.valid &&(tStatus.touched)" >
+            <div *ngIf="tStatus.errors.required" class="errorMsg">
+              <small id="helpId" class="text-muted">*required</small>
+            </div>
+        </div>
+                </div>
+                <div class="">
+                    <button type="submit" class="btn btn-primary" [disabled]='!taskForm.valid'>Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

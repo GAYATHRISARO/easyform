@@ -1,0 +1,38 @@
+<div [ngClass]="'login-container'">
+    <div class="container d-flex flex-row justify-content-center">
+        <div class="mt-5 pl-5 pr-5 pb-5 pt-2 w-50" [ngClass]="'login'">
+            <h3 class="text-center mb-3">Login</h3>
+            <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)">
+                <div class="form-group">
+                    <label for="username" class="">Username</label>
+                    <input type="text" name="username" id="username" class="form-control w-75" placeholder="Enter Your Username" required minlength=5 maxlength=10 ngModel #username="ngModel" />
+                </div>
+                <div *ngIf="!username.valid &&(username.touched||username.dirty)">
+                    <div *ngIf="username.errors.minlength" class="errorMsg">
+                        <small id="helpId" class="text">Minlength should be greater than 5</small>
+                    </div>
+                    <div *ngIf="username.errors.maxlength" class="errorMsg">
+                        <small id="helpId" class="text">Maxlength should be less than 10</small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="">Password</label>
+                    <input type="password" class="form-control w-75" name="password" placeholder="Enter Your Password" required minlength=5 maxlength=10 ngModel #password="ngModel" />
+                </div>
+                <div *ngIf="!password.valid &&(password.touched||password.dirty)">
+                    <div *ngIf="password.errors.minlength" class="errorMsg">
+                        <small id="helpId" class="text-muted">Minlength should be greater than 5</small>
+                    </div>
+                    <div *ngIf="password.errors.maxlength" class="errorMsg">
+                        <small id="helpId" class="text-muted">Maxlength should be less than 10</small>
+                    </div>
+                </div>
+                <div class="">
+                    <p>{{ errorMessage }}</p>
+                    <button type="submit" class="btn btn-primary" [disabled]='!loginForm.valid'>Login</button>
+                </div>
+            </form>
+            <!-- <button type="submit" class="btn btn-primary mt-3" routerLink="/register">Register</button> -->
+        </div>
+    </div>
+</div>
